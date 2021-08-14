@@ -1,4 +1,4 @@
-#!/bin/bash	
+#!/usr/bin/env bash	
 url=$1
 if [ ! -d "$url" ];then
 	mkdir $url
