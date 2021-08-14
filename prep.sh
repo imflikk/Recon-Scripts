@@ -11,7 +11,7 @@ apt -y upgrade
 
 echo "[+] Installing Golang and exporting Go path..."
 apt -y install golang-go
-export PATH="$PATH:$HOME/go/bin"
+echo \\nexport PATH="$PATH:$HOME/go/bin" >> ~/.zshrc
 
 echo "[+] Downloading resolvers.txt file for amass..."
 mkdir /opt/amass-resolvers
