@@ -69,7 +69,7 @@ cat $url/recon/wayback/wayback_output.txt | grep '?*=' | cut -d '=' -f 1 | sort 
 for line in $(cat $url/recon/wayback/params/wayback_params.txt);do echo $line'=';done
 
 ######
-# This step can take up a lot of storage space depending on the number of pages.  Uncomment this if needed.
+# This step can take up a lot of storage space depending on the number of pages archived.  Uncomment this if needed.
 ######
 #echo "[+] Pulling and compiling js/php/aspx/jsp/json files from wayback output..."
 #for line in $(cat $url/recon/wayback/wayback_output.txt);do
