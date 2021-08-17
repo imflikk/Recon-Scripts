@@ -68,30 +68,33 @@ echo "[+] Pulling and compiling all possible params found in wayback data..."
 cat $url/recon/wayback/wayback_output.txt | grep '?*=' | cut -d '=' -f 1 | sort -u >> $url/recon/wayback/params/wayback_params.txt
 for line in $(cat $url/recon/wayback/params/wayback_params.txt);do echo $line'=';done
 
-echo "[+] Pulling and compiling js/php/aspx/jsp/json files from wayback output..."
-for line in $(cat $url/recon/wayback/wayback_output.txt);do
-	ext="${line##*.}"
-	if [[ "$ext" == "js" ]]; then
-		echo $line >> $url/recon/wayback/extensions/js1.txt
-		sort -u $url/recon/wayback/extensions/js1.txt >> $url/recon/wayback/extensions/js.txt
-	fi
-	if [[ "$ext" == "html" ]];then
-		echo $line >> $url/recon/wayback/extensions/jsp1.txt
-		sort -u $url/recon/wayback/extensions/jsp1.txt >> $url/recon/wayback/extensions/jsp.txt
-	fi
-	if [[ "$ext" == "json" ]];then
-		echo $line >> $url/recon/wayback/extensions/json1.txt
-		sort -u $url/recon/wayback/extensions/json1.txt >> $url/recon/wayback/extensions/json.txt
-	fi
-	if [[ "$ext" == "php" ]];then
-		echo $line >> $url/recon/wayback/extensions/php1.txt
-		sort -u $url/recon/wayback/extensions/php1.txt >> $url/recon/wayback/extensions/php.txt
-	fi
-	if [[ "$ext" == "aspx" ]];then
-		echo $line >> $url/recon/wayback/extensions/aspx1.txt
-		sort -u $url/recon/wayback/extensions/aspx1.txt >> $url/recon/wayback/extensions/aspx.txt
-	fi
-done
+######
+# This step can take up a lot of storage space depending on the number of pages.  Uncomment this if needed.
+######
+#echo "[+] Pulling and compiling js/php/aspx/jsp/json files from wayback output..."
+#for line in $(cat $url/recon/wayback/wayback_output.txt);do
+#	ext="${line##*.}"
+#	if [[ "$ext" == "js" ]]; then
+#		echo $line >> $url/recon/wayback/extensions/js1.txt
+#		sort -u $url/recon/wayback/extensions/js1.txt >> $url/recon/wayback/extensions/js.txt
+#	fi
+#	if [[ "$ext" == "html" ]];then
+#		echo $line >> $url/recon/wayback/extensions/jsp1.txt
+#		sort -u $url/recon/wayback/extensions/jsp1.txt >> $url/recon/wayback/extensions/jsp.txt
+#	fi
+#	if [[ "$ext" == "json" ]];then
+#		echo $line >> $url/recon/wayback/extensions/json1.txt
+#		sort -u $url/recon/wayback/extensions/json1.txt >> $url/recon/wayback/extensions/json.txt
+#	fi
+#	if [[ "$ext" == "php" ]];then
+#		echo $line >> $url/recon/wayback/extensions/php1.txt
+#		sort -u $url/recon/wayback/extensions/php1.txt >> $url/recon/wayback/extensions/php.txt
+#	fi
+#	if [[ "$ext" == "aspx" ]];then
+#		echo $line >> $url/recon/wayback/extensions/aspx1.txt
+#		sort -u $url/recon/wayback/extensions/aspx1.txt >> $url/recon/wayback/extensions/aspx.txt
+#	fi
+#done
 
 rm $url/recon/wayback/extensions/js1.txt
 rm $url/recon/wayback/extensions/jsp1.txt
